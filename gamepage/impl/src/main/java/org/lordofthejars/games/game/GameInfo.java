@@ -1,10 +1,11 @@
-package org.lordofthejars.games.game.api;
+package org.lordofthejars.games.game;
 
 import java.util.List;
 import org.lordofthejars.games.details.api.Detail;
+import org.lordofthejars.games.game.api.Game;
 import org.lordofthejars.games.reviews.api.Review;
 
-public class GameInfo {
+class GameInfo {
 
     private Game game;
     private Detail detail;
