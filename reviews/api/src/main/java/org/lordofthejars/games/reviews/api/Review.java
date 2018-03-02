@@ -5,10 +5,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 @Entity
+@Table(schema = "reviews")
 @NamedQuery(name = "Review.FindReviewsByGameId",
     query = "SELECT r FROM Review r WHERE r.gameId = :gameId")
 public class Review {
