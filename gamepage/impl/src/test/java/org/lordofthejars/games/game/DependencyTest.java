@@ -26,25 +26,24 @@ public class DependencyTest {
     public void dependency() {
         class OrgLordofthejarsGames extends DependencyRuler {
 
-            // Rules for org.lordofthejars.games.game,
-            // org.lordofthejars.games.details.api, org.lordofthejars.games.details.impl,
-            // org.lordofthejars.games.reviews.api, org.lordofthejars.reviews.impl
-            DependencyRule game, gameApi, gameImpl, detailsApi, detailsImpl, reviewsApi, reviewsImpl;
+            DependencyRule game, gameApi, gameImpl, detailsApi, reviewsApi;
 
             @Override
             public void defineRules() {
                 game
-                    .mayUse(gameApi, detailsApi, reviewsApi)
-                    .mustNotUse(detailsImpl, reviewsImpl);
+                    .mustUse(gameApi, detailsApi, reviewsApi);
 
                 gameImpl
-                    .mayUse(gameApi);
+                    .mayUse(game, gameApi);
             }
         }
 
         DependencyRules rules = DependencyRules.denyAll()
             .withRelativeRules(new OrgLordofthejarsGames())
-            .withExternals("java.*", "javax.*", "freemarker.*", "io.reactivex.*");
+            .withExternals("java.*", "javax.*", "freemarker.*",
+                "io.reactivex",
+                "io.reactivex.disposables",
+                "io.reactivex.schedulers");
 
         DependencyResult result = new DependencyAnalyzer(config)
             .rules(rules)
