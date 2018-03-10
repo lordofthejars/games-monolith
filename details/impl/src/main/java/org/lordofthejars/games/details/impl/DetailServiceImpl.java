@@ -1,5 +1,8 @@
 package org.lordofthejars.games.details.impl;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.vavr.CheckedFunction0;
+import io.vavr.control.Try;
 import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -17,8 +20,19 @@ class DetailServiceImpl implements DetailService {
 
     @Override
     public Optional<Detail> findDetailByGameId(long gameId) {
-        final Detail detail =
-            entityManager.find(Detail.class, gameId);
-        return Optional.ofNullable(detail);
+
+        final CircuitBreaker circuitBreaker = CircuitBreaker.ofDefaults("database");
+
+        CheckedFunction0<Optional<Detail>> checkedSupplier = CircuitBreaker.decorateCheckedSupplier(circuitBreaker, () -> {
+            final Detail detail =
+                entityManager.find(Detail.class, gameId);
+            return Optional.ofNullable(detail);
+        });
+
+        // TODO log exception
+        Try<Optional<Detail>> result = Try.of(checkedSupplier)
+            .recover(throwable -> Optional.empty());
+
+        return result.get();
     }
 }
