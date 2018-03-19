@@ -43,7 +43,9 @@ public class DependencyTest {
             .withExternals("java.*", "javax.*", "freemarker.*",
                 "io.reactivex",
                 "io.reactivex.disposables",
-                "io.reactivex.schedulers");
+                "io.reactivex.schedulers",
+                "io.vavr.control",
+                "io.github.resilience4j.circuitbreaker");
 
         DependencyResult result = new DependencyAnalyzer(config)
             .rules(rules)

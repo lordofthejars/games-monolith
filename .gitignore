@@ -10,6 +10,9 @@
 *.iws
 .idea
 bin/
+build/
+# VS CODE
+.vscode/
 
 # Gradle
 .gradle/

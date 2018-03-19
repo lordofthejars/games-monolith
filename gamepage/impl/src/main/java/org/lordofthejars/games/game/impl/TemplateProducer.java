@@ -13,7 +13,7 @@ import org.lordofthejars.games.game.api.FreeMarker;
 class TemplateProducer {
 
     @Produces @FreeMarker("")
-    Template buildTwmplateProcessor(InjectionPoint injectionPoint) throws IOException {
+    Template buildTemplateProcessor(InjectionPoint injectionPoint) throws IOException {
 
         final Configuration cfg = new Configuration(new Version(2, 3, 23));
 

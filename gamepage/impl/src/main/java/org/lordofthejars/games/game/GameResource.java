@@ -9,7 +9,6 @@ import io.reactivex.disposables.Disposable;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
@@ -61,14 +60,7 @@ public class GameResource {
                 .subscribeOn(scheduler),
             getReviews(gameId)
                 .subscribeOn(scheduler),
-            (game, detail, reviews) -> {
-
-                final Map<String, Object> templateData = new HashMap<>();
-                templateData.put("game", game);
-                templateData.put("detail", detail);
-                templateData.put("reviews", reviews);
-                return templateData;
-            })
+            (game, detail, reviews) -> TemplateParameters.create(game, detail, reviews))
             .subscribeOn(scheduler)
             .subscribe(renderTemplate(asyncResponse));
 
