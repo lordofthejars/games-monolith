@@ -45,7 +45,8 @@ public class DependencyTest {
                 "io.reactivex.disposables",
                 "io.reactivex.schedulers",
                 "io.vavr.control",
-                "io.github.resilience4j.circuitbreaker");
+                "io.github.resilience4j.circuitbreaker",
+                "org.flywaydb.core");
 
         DependencyResult result = new DependencyAnalyzer(config)
             .rules(rules)
