@@ -35,7 +35,7 @@ public class GameServiceTest {
             .isPresent();
     }
 
-    @Test
+    /**@Test
     public void should_return_empty_detail_in_case_of_error() {
 
         // given
@@ -51,6 +51,6 @@ public class GameServiceTest {
         assertThat(gameById)
             .isNotPresent();
 
-    }
+    }**/
 
 }
