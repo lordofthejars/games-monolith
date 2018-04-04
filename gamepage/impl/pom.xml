@@ -136,6 +136,12 @@
       <artifactId>gamepage-api</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.arquillian.smart.testing</groupId>
+      <artifactId>api</artifactId>
+      <version>${arquillian.smarttesting.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

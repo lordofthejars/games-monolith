@@ -45,3 +45,7 @@ README.html
 gh-pages/
 
 atlassian-ide-plugin.xml
+
+# Smart Testing Exclusions
+.smart-testing/
+

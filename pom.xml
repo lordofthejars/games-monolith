@@ -14,6 +14,7 @@
     <javaee.version>7.0</javaee.version>
     <arquillian.chameleon.version>1.0.0.CR2</arquillian.chameleon.version>
     <arquillian.persistence.version>2.0.0-alpha.7</arquillian.persistence.version>
+    <arquillian.smarttesting.version>0.0.10</arquillian.smarttesting.version>
   </properties>
 
   <dependencyManagement>
@@ -114,5 +115,15 @@
     <module>gamepage/api</module>
     <module>gamepage/impl</module>
   </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20.1</version>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
